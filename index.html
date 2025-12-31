@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Serpent | Cyberpunk Arcade</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐍%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="A high-octane, neon-infused Snake game with smooth mechanics and visual effects." />
+  <meta property="og:title" content="Neon Serpent" />
+  <meta property="og:description" content="Master the grid in this neon-drenched arcade experience." />
+  <meta property="og:type" content="website" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #171717;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #game-container {
+      position: relative;
+      box-shadow: 0 0 50px rgba(158, 127, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid #2F2F2F;
+    }
+    canvas {
+      display: block;
+      background: #171717;
+    }
+    .ui-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .menu-card {
+      background: rgba(38, 38, 38, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 24px;
+      border: 1px solid #9E7FFF;
+      text-align: center;
+      pointer-events: auto;
+      transition: all 0.3s ease;
+    }
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 3rem;
+      background: linear-gradient(45deg, #9E7FFF, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+    .btn {
+      background: #9E7FFF;
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(158, 127, 255, 0.5);
+    }
+    .stats {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #9E7FFF;
+      text-shadow: 0 0 10px rgba(158, 127, 255, 0.5);
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div class="stats" id="score-display">SCORE: 0</div>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="menu-scene" class="ui-layer">
+      <div class="menu-card">
+        <h1>NEON SERPENT</h1>
+        <p style="color: #A3A3A3; margin-bottom: 2rem;">Use Arrow Keys or WASD to navigate the grid.</p>
+        <button class="btn" id="start-btn">START MISSION</button>
+      </div>
+    </div>
+
+    <div id="gameover-scene" class="ui-layer hidden">
+      <div class="menu-card">
+        <h1 style="color: #ef4444;">CRASHED</h1>
+        <p id="final-score" style="font-size: 1.5rem; margin-bottom: 1rem;">SCORE: 0</p>
+        <button class="btn" id="restart-btn">REBOOT SYSTEM</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
